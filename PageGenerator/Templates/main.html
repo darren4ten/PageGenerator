@@ -1,0 +1,174 @@
+﻿<html>
+<head>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+    <style>
+        .main {
+            margin: auto;
+            width: 800px;
+            border: 1px solid green;
+        }
+
+        .left {
+            width: 500px;
+            float: left;
+            border: 1px solid gray;
+            height: 500px;
+            overflow-y: scroll;
+        }
+
+        .right {
+            width: 280px;
+            float: left;
+            border: 1px solid gray;
+            height: 500px;
+            overflow-y: scroll;
+            position: relative;
+        }
+
+        .dragableColumn {
+            position: absolute;
+            cursor: move;
+            width: 260px;
+            overflow: hidden;
+            height: 18px;
+            background-color: #c0c0c0;
+            border: 1px solid goldenrod;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+        <span class="btn">test</span>
+    </div>
+</body>
+</html>
+<script>
+    if (typeof (JSON) == 'undefined') {
+        JSON = {};
+        JSON.parse = function (str) {
+            return eval("(" + str + ")");
+        }
+    }
+
+    var testData = [{ "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "ID", "PropertyName": null, "DataType": "uniqueidentifier", "PropertyType": null, "Length": 16, "ColumnDescription": null, "DefaultValue": null, "IsNullable": false, "IsIdentity": false, "IsPrimarykey": true, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "CreateUser", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "CreateTime", "PropertyName": null, "DataType": "datetime", "PropertyType": null, "Length": 8, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "ModifiedUser", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "ModifiedTime", "PropertyName": null, "DataType": "datetime", "PropertyType": null, "Length": 8, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "WorkflowInstanceID", "PropertyName": null, "DataType": "uniqueidentifier", "PropertyType": null, "Length": 16, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "WorkflowVersion", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 100, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "WorkflowPendingUsers", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": -1, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "WorkflowCurrentNode", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "WorkflowCurrentNodeDisplayName", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "IsDeleted", "PropertyName": null, "DataType": "bit", "PropertyType": null, "Length": 1, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "LatestVersion", "PropertyName": null, "DataType": "timestamp", "PropertyType": null, "Length": 8, "ColumnDescription": null, "DefaultValue": null, "IsNullable": false, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SubmitUser", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SubmitTime", "PropertyName": null, "DataType": "datetime", "PropertyType": null, "Length": 8, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SN", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 200, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "CostName", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "LineManager", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealTargetDepartment", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 200, "ColumnDescription": null, "DefaultValue": null, "IsNullable": false, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "Note", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 1000, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealFileAttributes", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 100, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealTypes", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealFilePageCount", "PropertyName": null, "DataType": "int", "PropertyType": null, "Length": 4, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealFileCount", "PropertyName": null, "DataType": "int", "PropertyType": null, "Length": 4, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealTime", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 200, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealCompany", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 500, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealDepository", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }, { "TableName": "BPM_CompanySeal", "TableId": 1365579903, "DbColumnName": "SealDepositoryUserName", "PropertyName": null, "DataType": "nvarchar", "PropertyType": null, "Length": 510, "ColumnDescription": null, "DefaultValue": null, "IsNullable": true, "IsIdentity": false, "IsPrimarykey": false, "Value": null, "DecimalDigits": 0, "Scale": 0 }];
+
+    var manager = {
+        data: {
+            columns: []
+        },
+        methods: {
+            test: function () {
+                setData("columns", testData);
+            },
+            loadColumns: function () {
+                var html = "";
+                for (var i = 0; i < manager.data.columns.length; i++) {
+                    var cur = manager.data.columns[i];
+                    //alert(cur + "---" + typeof (cur));
+                    html += "<div class='dragableColumn'><span>" + (cur.ColumnDescription != null ? cur.ColumnDescription : cur.DbColumnName) + "</span><span>" + cur.DbColumnName + "</span></div>";
+                }
+                $(".right").html(html);
+            }
+        }
+    }
+
+    function setData(key, value) {
+        manager["data"][key] = typeof (value) == "string" ? JSON.parse(value) : value;
+        manager.methods.loadColumns();
+    }
+
+    function triggerMethod(mName) {
+        (manager.methods[mName])();
+    }
+
+    $(function () {
+        //manager.methods.test();
+        triggerMethod("test");
+    });
+
+</script>
+
+<script>
+    var Event = {
+        addHandler: function (oElement, sEvent, fnHandler) {
+            if (oElement.addEventListener) {
+                oElement.addEventListener(sEvent, fnHandler, false);
+            } else {
+                oElement.attachEvent("on" + sEvent, fnHandler);
+            }
+        },
+        removeHandler: function (oElement, sEvent, fnHandler) {
+            oElement.removeEventListener ? oElement.removeEventListener(sEvent, fnHandler, false) : oElement.detachEvent("on" + sEvent, fnHandler)
+        }
+    }
+    var Dragging = function (validateHandler) { //参数为验证点击区域是否为可移动区域，如果是返回欲移动元素，负责返回null
+        var draggingObj = null; //dragging Dialog
+        var diffX = 0;
+        var diffY = 0;
+
+        function mouseHandler(e) {
+            switch (e.type) {
+                case 'mousedown':
+                    draggingObj = validateHandler(e);//验证是否为可点击移动区域
+                    if (draggingObj != null) {
+                        diffX = e.clientX - draggingObj.offsetLeft;
+                        diffY = e.clientY - draggingObj.offsetTop;
+                    }
+                    break;
+
+                case 'mousemove':
+                    if (draggingObj) {
+                        draggingObj.style.left = (e.clientX - diffX) + 'px';
+                        draggingObj.style.top = (e.clientY - diffY) + 'px';
+                    }
+                    break;
+
+                case 'mouseup':
+                    draggingObj = null;
+                    diffX = 0;
+                    diffY = 0;
+                    break;
+            }
+        };
+
+        return {
+            enable: function () {
+                Event.addHandler(document, 'mousedown', mouseHandler);
+                Event.addHandler(document, 'mousemove', mouseHandler);
+                Event.addHandler(document, 'mouseup', mouseHandler);
+            },
+            disable: function () {
+                Event.removeHandler(document, 'mousedown', mouseHandler);
+                Event.removeHandler(document, 'mousemove', mouseHandler);
+                Event.removeHandler(document, 'mouseup', mouseHandler);
+            }
+        }
+    }
+
+
+    /**
+* 获取要执行的对象
+   **/
+    function getDraggingDialog(e) {
+        // 兼容IE8、IE7处理
+        var event = window.event || e;
+        var target = event.srcElement || event.target;
+        while (target && target.className.indexOf('dragableColumn') == -1) {
+            target = target.offsetParent;
+        }
+        if (target != null) {
+            return target.offsetParent;
+        } else {
+            return null;
+        }
+    }
+
+    Dragging(getDraggingDialog).enable();
+</script>

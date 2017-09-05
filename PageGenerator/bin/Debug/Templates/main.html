@@ -1,0 +1,78 @@
+﻿<html>
+<head>
+    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+    <style>
+        .main {
+            margin: auto;
+            width: 800px;
+            border: 1px solid green;
+        }
+
+        .left {
+            width: 500px;
+            float: left;
+            border: 1px solid gray;
+            height: 500px;
+        }
+
+        .right {
+            width: 280px;
+            float: left;
+            border: 1px solid gray;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    if (typeof (JSON) == 'undefined') {
+        JSON = {};
+        JSON.parse = function (str) {
+            return eval("(" + str + ")");
+        }
+    }
+
+    var manager = {
+        data: {
+            columns: []
+        },
+        methods: {
+            test: function () {
+                alert("haha" + $("#txtTest").val());
+            },
+            loadColumns: function (columns) {
+                var html = "";
+                for (var i = 0; i < columns.length; i++) {
+                    var cur = columns[i];
+                    alert(cur + "---" + typeof (cur));
+                    html += "<div class='dragableColumn'><span>" + (cur.ColumnDescription != null ? cur.ColumnDescription : cur.DbColumnName) + "</span><span>" + cur.DbColumnName + "</span></div>";
+                }
+                $(".right").html(html);
+            }
+        }
+    }
+
+    function setData(key, value) {
+        manager["data"][key] = typeof (value) == "string" ? JSON.parse(value) : value;
+        manager.methods.loadColumns(manager.data.columns);
+    }
+    function triggerMethod(mName) {
+        (manager.methods[mName])();
+    }
+
+    $(function () {
+        //manager.methods.test();
+        triggerMethod("test");
+    });
+
+</script>
